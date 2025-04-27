@@ -28,13 +28,13 @@ public class RelativeLocationTest extends BaseTest2{
         WebElement element = driver.findElement(textAboveClickMeBtn_Locator);
         Utility.printElementInfo("textAboveClickMeBtn", element);
     }
-    //    @Test
-//    void relativeLocator_Below() {
-//        By textBelowClickMeBtn_Locator = RelativeLocator.with(By.tagName("p")).straightBelow(By.id("mainButton"));
-//        WebElement element = driver.findElement(textBelowClickMeBtn_Locator);
-//
-//        Utility.printElementInfo("textBelowClickMeBtn_Locator", element);
-//    }
+    //   @Test
+    //void relativeLocator_Below() {
+       // By textBelowClickMeBtn_Locator = RelativeLocator.with(By.tagName("p")).straightBelow(By.id("mainButton"));
+       // WebElement element = driver.findElement(textBelowClickMeBtn_Locator);
+
+       // Utility.printElementInfo("textBelowClickMeBtn_Locator", element);
+    //}
     @Test
     void relativeLocator_Below() {
         By btnBelowClickMeBtn_Locator = RelativeLocator.with(By.tagName("button")).below(By.id("mainButton"));
