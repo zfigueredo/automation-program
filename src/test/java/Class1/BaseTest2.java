@@ -21,4 +21,5 @@ public class BaseTest2 {
         if(driver!=null)
             driver.quit();
     }
+
 }

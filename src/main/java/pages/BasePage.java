@@ -63,7 +63,7 @@ public class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    public void type(By locator,String text){
+    public void type(By locator, String text){
         WebElement element = findElement(locator);
         element.clear();
         element.sendKeys(text);
