@@ -18,7 +18,7 @@ public class WebDriverFactory {
             case CHROME:
             default:
                 ChromeOptions options = new ChromeOptions();
-                options.addArguments("--start-maximized");
+                options.addArguments("--start-maximized", "--incognito");
                 driver = new ChromeDriver(options);
                 break;
         }
