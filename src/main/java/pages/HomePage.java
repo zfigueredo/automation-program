@@ -2,6 +2,9 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class HomePage extends BasePage{
 
@@ -18,7 +21,7 @@ public class HomePage extends BasePage{
 
 
     //Product Links Localizadores
-    By productLink_Locator = By.cssSelector("a[href='/shop/sale']");
+    By productLinkList_Locator = By.cssSelector("a.grid-item-link.product-lists-item");
 
     //Footer Localizador
     By qualityStreamLogo_Locator = By.xpath(
@@ -32,6 +35,13 @@ public class HomePage extends BasePage{
     }
 
 //Methods
+
+    public void clickOnProductLink(int index){
+        List<WebElement> productLinks = findElements(productLinkList_Locator);
+        if (index < productLinks.size())
+            productLinks.get(index).click();
+    }
+
     public boolean isQSCreditCardsLinksDisplayed(){
         boolean isDisplayed = isDisplayed(qsCreditCardLink_Locator);
         System.out.println("Is CC link displayed "+isDisplayed);

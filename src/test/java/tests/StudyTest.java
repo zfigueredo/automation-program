@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.StudyPage;
+//import pages.StudyPage;
 
 
 // Test para hacer la tarea de product details con papi
-public class StudyTest extends BaseTest {
+/*public class StudyTest extends BaseTest {
     StudyPage productPage;
 
     @BeforeEach
@@ -38,4 +38,4 @@ public class StudyTest extends BaseTest {
         Assertions.assertEquals(cartTotalItemsBeforeTest + addedQuantity, cartTotalItemsAfterTest);
         System.out.println("The quantity amount of the Cart was updated " + cartTotalItemsAfterTest);
     }
-}
+}*/

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class StudyPage extends BasePage {
+/*public class StudyPage extends BasePage {
     By selectSizeLocator = By.cssSelector("select[aria-label='Select Size']");
     By inputQtyLocator = By.cssSelector("input[aria-label='Quantity']");
     By addToCartButtonLocator = By.cssSelector("div.sqs-add-to-cart-button");
@@ -36,4 +36,16 @@ public class StudyPage extends BasePage {
         waitForElementToBePresent(toolBarCartButton);
         return Integer.parseInt(getText(toolBarCartButton));
     }
-}
+
+    public String getProductTitle() {
+        // Arrange: Localizar el elemento del título del producto
+        By productTitle_Locator = By.cssSelector("h1.ProductItem-details-title");
+
+        // Action: Obtener el texto del elemento
+        return getText(productTitle_Locator);
+    }
+
+
+
+
+}*/
