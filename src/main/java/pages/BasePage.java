@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
+import java.util.List;
 
 import java.time.Duration;
 
@@ -27,6 +29,11 @@ public class BasePage {
         return driver.findElement(locator);
     }
 
+    public List<WebElement> findElements(By locator){
+        waitForElementToBePresent(locator);
+        return driver.findElements(locator);
+    }
+
     public String getText(By locator){
         return findElement(locator).getText();
     }
@@ -42,8 +49,23 @@ public class BasePage {
         }
     }
 
-    public void navigate(String url){
-        driver.get(url);
+    public void navigate(String url){driver.get(url);}
+
+    public void selectByVisibleText(By locator, String text){
+        WebElement element = findElement(locator);
+        Select select = new Select(element);
+        select.selectByVisibleText(text);
+    }
+
+    public void selectByValue(By locator, String value){
+        WebElement element = findElement(locator);
+        Select select = new Select(element);
+        select.selectByValue(value);
+    }
+    public void selectByIndex(By locator, int index){
+        WebElement element = findElement(locator);
+        Select select = new Select(element);
+        select.selectByIndex(index);
     }
 
     public void waitForElementToBePresent(By locator){
