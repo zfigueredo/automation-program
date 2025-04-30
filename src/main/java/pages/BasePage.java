@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -95,5 +96,18 @@ public class BasePage {
         WebElement element = findElement(locator);
         element.submit();
     }
+
+    //metodos agregado por la profe porque cuando le abre su pagina se ve pequenna y hay cosas que se overlap
+    public void scrollIntoViewAndClick(WebElement element){
+        waitForElementToBeClickable(element);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView()",element);
+        js.executeScript("arguments[0].click()",element);
+    }
+
+    public void waitForElementToBeClickable(WebElement element){
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
 
 }
