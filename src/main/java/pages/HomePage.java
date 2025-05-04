@@ -12,6 +12,7 @@ public class HomePage extends BasePage{
     By qsCreditCardLink_Locator = By.cssSelector("a[href='/qualitystream-credit-cards']");
     By headerYoutubeIcon_Locator = By.cssSelector(
             "div.header-actions-action.header-actions-action--social a[aria-label='YouTube']");
+    By coursePageLink_Locator = By.cssSelector("a[href='/formpage']");
 
     //Filter Localizadores
     By bottomsLocator = By.xpath("//a[@href='/shop/bottoms']");
@@ -35,6 +36,10 @@ public class HomePage extends BasePage{
     }
 
 //Methods
+
+    public void clickOnCoursesLink(int index){
+        click(coursePageLink_Locator);
+    }
 
     public void clickOnProductLink(int index){
         List<WebElement> productLinks = findElements(productLinkList_Locator);
