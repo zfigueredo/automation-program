@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 //import pages.StudyPage;
 
 
-// Test para hacer la tarea de product details con papi
+// Test para hacer la tarea de product details
 /*public class StudyTest extends BaseTest {
     StudyPage productPage;
 
