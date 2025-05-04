@@ -1,4 +1,4 @@
-package Class1;
+package Example1;
 
 import Config.BrowserType;
 import Config.WebDriverFactory;

@@ -63,6 +63,7 @@ public class BasePage {
         Select select = new Select(element);
         select.selectByValue(value);
     }
+
     public void selectByIndex(By locator, int index){
         WebElement element = findElement(locator);
         Select select = new Select(element);
@@ -100,6 +101,14 @@ public class BasePage {
     //metodos agregado por la profe porque cuando le abre su pagina se ve pequenna y hay cosas que se overlap
     public void scrollIntoViewAndClick(WebElement element){
         waitForElementToBeClickable(element);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView()",element);
+        js.executeScript("arguments[0].click()",element);
+    }
+
+    public void scrollIntoViewAndClick(By locator){
+        waitForElementToBeClickable(locator);
+        WebElement element = findElement(locator);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView()",element);
         js.executeScript("arguments[0].click()",element);
