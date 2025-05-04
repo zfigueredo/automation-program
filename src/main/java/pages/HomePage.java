@@ -37,7 +37,7 @@ public class HomePage extends BasePage{
 
 //Methods
 
-    public void clickOnCoursesLink(int index){
+    public void clickOnCoursesLink(){
         click(coursePageLink_Locator);
     }
 
