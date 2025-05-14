@@ -1,5 +1,6 @@
 package Dataclasses;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Student {
@@ -17,6 +18,7 @@ public class Student {
         this.name = name;
         this.country = country;
         this.date = date;
+        this.courses = new ArrayList<String>();
     }
 
     public String getName() {
@@ -69,8 +71,8 @@ public class Student {
     public List<String> getCourses() {
         return courses;
     }
-    public void addCourse(String courses){
-        this.courses.add(courses);
+    public void addCourse(String course){
+        this.courses.add(course);
     }
 
 

@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import utils.Utility;
 
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class CoursePage extends BasePage{
+
+    private static final Logger logger = LoggerFactory.getLogger(CoursePage.class);
 
     By inputName_Locator = By.id("name");
     By inputLastName_Locator = By.id("lastName");
@@ -87,7 +91,7 @@ public class CoursePage extends BasePage{
         }
 
         boolean isTextPresent = cellsText.contains(element);
-        System.out.println("isText: " + element +"present: "+isTextPresent);
+        logger.info("isText: " + element +"present: "+isTextPresent);
 
         return isTextPresent;
 
@@ -107,7 +111,7 @@ public class CoursePage extends BasePage{
         for (WebElement course : coursesList){
             if(course.isSelected()){
                 String courseName = course.getDomAttribute("value");
-                System.out.println("course name: "+courseName);
+                logger.info("course name: "+courseName);
                 if(!courseName.isEmpty())
                     student.addCourse(courseName);
             }
@@ -126,22 +130,22 @@ public class CoursePage extends BasePage{
                 String nameCell = cells.get(0).getText().trim();
                 String studentName = student.getName();
                 boolean isNamePresent = nameCell.equalsIgnoreCase(studentName);
-                System.out.println("Student name:" + studentName + "| name in table:"+nameCell);
-                System.out.println("is student Name Present:"+isNamePresent);
+                logger.info("Student name:" + studentName + "| name in table:"+nameCell);
+                logger.info("is student Name Present:"+isNamePresent);
 
                 String studentCountry = student.getCountry();
                 String countryCell = cells.get(1).getText().trim();
                 boolean isCountryPresent = countryCell.equalsIgnoreCase(studentCountry);
-                System.out.println("Student country:" + studentCountry + "| country in table:"+countryCell);
-                System.out.println("is student Country Present:"+isCountryPresent);
+                logger.info("Student country:" + studentCountry + "| country in table:"+countryCell);
+                logger.info("is student Country Present:"+isCountryPresent);
 
                 String studentDate = student.getDate();
                 String dateCell = cells.get(2).getText().trim();
                 boolean isDatePresent = Utility.compareDates(student.getDate(), "MM/dd/yyyy",
                         cells.get(2).getText().trim(), "yyyy-MM-dd");
 
-                System.out.println("Student date:" + studentDate + "| date in table:"+dateCell);
-                System.out.println("is student Date present:"+isDatePresent);
+                logger.info("Student date:" + studentDate + "| date in table:"+dateCell);
+                logger.info("is student Date present:"+isDatePresent);
 
 
                 String courseCell = cells.get(3).getText().trim();
@@ -149,8 +153,8 @@ public class CoursePage extends BasePage{
                 boolean areAllCoursesPresent = studentCourses.stream()
                         .allMatch(course -> courseCell.contains(course));
 
-                System.out.println("Student courses:" + studentCourses + "| course in table:"+courseCell);
-                System.out.println("is student Course present:"+areAllCoursesPresent);
+                logger.info("Student courses:" + studentCourses + "| course in table:"+courseCell);
+                logger.info("is student Course present:"+areAllCoursesPresent);
 
                 if (isNamePresent && isCountryPresent && isDatePresent && areAllCoursesPresent) {
                     return true;

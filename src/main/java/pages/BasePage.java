@@ -1,15 +1,14 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 import java.time.Duration;
+import java.util.Set;
 
 public class BasePage {
 
@@ -68,6 +67,57 @@ public class BasePage {
         WebElement element = findElement(locator);
         Select select = new Select(element);
         select.selectByIndex(index);
+    }
+
+
+    public void acceptAlert(){
+        waitForAlertToBePresent();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+
+    public void dismissAlert(){
+        waitForAlertToBePresent();
+        Alert alert = driver.switchTo().alert();
+        alert.dismiss();
+    }
+
+    public void sendKeysToAlert(String msg){
+        waitForAlertToBePresent();
+        Alert alert = driver.switchTo().alert();
+        alert.sendKeys(msg);
+        alert.accept();
+    }
+
+    public String getAlertText(){
+        waitForAlertToBePresent();
+        Alert alert = driver.switchTo().alert();
+        return alert.getText();
+    }
+
+    public void switchToNewWindows(String originalHandle){
+        waitForNewWindow();
+        Set<String> allWindows = driver.getWindowHandles();
+        for (String handle: allWindows){
+            System.out.println("handle: "+handle);
+            if(!handle.equals(originalHandle)){
+                driver.switchTo().window(handle);
+            }
+        }
+
+    }
+
+    public void waitForeAlertToBePresent(){
+        wait.until(ExpectedConditions.alertIsPresent());
+    }
+
+    public void waitForAlertToBePresent(){
+        wait.until(ExpectedConditions.alertIsPresent());
+    }
+
+    public void waitForNewWindow(){
+        wait.until((ExpectedCondition<Boolean>)
+                d -> d !=null && d.getWindowHandles().size()>1);
     }
 
     public void waitForElementToBePresent(By locator){

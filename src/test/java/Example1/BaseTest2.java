@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 public class BaseTest2 {
 
-    static WebDriver driver;
+    public static WebDriver driver;
 
     @BeforeAll
     static void beforeAll() {
