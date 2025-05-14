@@ -2,6 +2,7 @@ package utils;
 
 import org.openqa.selenium.WebElement;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -43,6 +44,25 @@ public class Utility {
         }
 
     }
+
+    /*public static boolean waitForNewFile(File folder, int timeoutInSeconds, int originalFileCount) {
+        System.out.println("originalFileCount:"+originalFileCount);
+        int elapsed = 0;
+        while (elapsed < timeoutInSeconds) {
+            File[] files = folder.listFiles();
+            if (files != null && files.length > originalFileCount) {
+                System.out.println("new file count:"+files.length);
+                return true; // New file appeared
+            }
+            try {
+                Thread.sleep(1000); // poll every 1 second
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            elapsed++;
+        }
+        return false; // timeout reached
+    }*/
 
 
 }

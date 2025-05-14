@@ -3,16 +3,21 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class HomePage extends BasePage{
+
+    private static final Logger logger = LoggerFactory.getLogger(HomePage.class);
 
     //Header Links Localizadores
     By qsCreditCardLink_Locator = By.cssSelector("a[href='/qualitystream-credit-cards']");
     By headerYoutubeIcon_Locator = By.cssSelector(
             "div.header-actions-action.header-actions-action--social a[aria-label='YouTube']");
     By coursePageLink_Locator = By.cssSelector("a[href='/formpage']");
+    By webElementTestLink_Locator = By.cssSelector("a[href='/webelements-test']");
 
     //Filter Localizadores
     By bottomsLocator = By.xpath("//a[@href='/shop/bottoms']");
@@ -41,6 +46,10 @@ public class HomePage extends BasePage{
         click(coursePageLink_Locator);
     }
 
+    public void clickOnWebElementTestLink(){
+        click(webElementTestLink_Locator);
+    }
+
     public void clickOnProductLink(int index){
         List<WebElement> productLinks = findElements(productLinkList_Locator);
         if (index < productLinks.size())
@@ -49,13 +58,13 @@ public class HomePage extends BasePage{
 
     public boolean isQSCreditCardsLinksDisplayed(){
         boolean isDisplayed = isDisplayed(qsCreditCardLink_Locator);
-        System.out.println("Is CC link displayed "+isDisplayed);
+        logger.info("Is CC link displayed "+isDisplayed);
         return isDisplayed;
     }
 
    /* public boolean isShopSpecificItemLinksDisplayed(){
         boolean isDisplayed = isDisplayed(specificItemLink_Locator);
-        System.out.println("Is item link displayed "+isDisplayed);
+        logger.info("Is item link displayed "+isDisplayed);
         return isDisplayed;
     }*/
 
@@ -65,7 +74,7 @@ public class HomePage extends BasePage{
 
     public boolean isHeaderYTIconIsDisplayed(){
         boolean isDisplayed = isDisplayed(headerYoutubeIcon_Locator);
-        System.out.println("Is CC link displayed "+isDisplayed);
+        logger.info("Is CC link displayed "+isDisplayed);
         return isDisplayed;
     }
 
@@ -74,9 +83,9 @@ public class HomePage extends BasePage{
         boolean bottomFilterLinkPresent = isDisplayed(bottomsLocator);
         boolean saleFilterLinkPresent = isDisplayed(saleLink_Locator);
 
-        System.out.println("topFilterLinkPresent "+topFilterLinkPresent);
-        System.out.println("bottomFilterLinkPresent "+bottomFilterLinkPresent);
-        System.out.println("saleFilterLinkPresent "+saleFilterLinkPresent);
+        logger.info("topFilterLinkPresent "+topFilterLinkPresent);
+        logger.info("bottomFilterLinkPresent "+bottomFilterLinkPresent);
+        logger.info("saleFilterLinkPresent "+saleFilterLinkPresent);
         return topFilterLinkPresent && bottomFilterLinkPresent && saleFilterLinkPresent;
     }
 
