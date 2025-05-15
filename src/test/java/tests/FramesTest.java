@@ -24,8 +24,8 @@ public class FramesTest extends BaseTest{
 
     @BeforeEach
     void init() {
-        homePage = new HomePage(driver);
-        webElementTestPage = new WebElementsTestPage(driver);
+        homePage = new HomePage();
+        webElementTestPage = new WebElementsTestPage();
         homePage.clickOnWebElementTestLink();
         webElementTestPage.clickOnFramesLink();
     }

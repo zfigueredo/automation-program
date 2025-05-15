@@ -16,8 +16,8 @@ public class WebElementsTestPage extends BasePage{
     By framesLink_Locator = By.cssSelector("a[href='https://qualitystream-demo.netlify.app/frames']");
 
 
-    public WebElementsTestPage(WebDriver driver) {
-        super(driver);
+    public WebElementsTestPage() {
+
     }
 
     public void clickOnNewWindow(){

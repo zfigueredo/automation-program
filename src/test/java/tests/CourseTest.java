@@ -25,8 +25,8 @@ public class CourseTest extends BaseTest{
 
     @BeforeEach
     void initPageObject() {
-        homePage = new HomePage(driver);
-        coursePage = new CoursePage(driver);
+        homePage = new HomePage();
+        coursePage = new CoursePage();
 
         homePage.clickOnCoursesLink();
     }

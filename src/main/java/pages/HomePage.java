@@ -36,8 +36,7 @@ public class HomePage extends BasePage{
     By footerLinksList_Locator = By.cssSelector("footer a");
 
     //Constructor
-    public HomePage(WebDriver driver) {
-        super(driver);
+    public HomePage() {
     }
 
 //Methods

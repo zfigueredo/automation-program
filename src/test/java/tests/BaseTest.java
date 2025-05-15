@@ -1,25 +1,26 @@
 package tests;
 
 import Config.BrowserType;
+import Config.DriverManager;
 import Config.WebDriverFactory;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 
 public class BaseTest {
 
-    WebDriver driver;
+    static WebDriver driver;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
         driver = WebDriverFactory.createDriver(BrowserType.CHROME);
         driver.get("https://www.qualitystream-practice.com/");
     }
 
-    @AfterEach
-    void tearDown() {
-        if(driver!=null){
-            driver.quit();
-        }
+    @AfterAll
+    static void tearDown() {
+        DriverManager.quitDriver();
     }
 }

@@ -13,8 +13,8 @@ public class ProductDetailsTest extends BaseTest {
 
     @BeforeEach
     void initPageObject() {
-        homePage = new HomePage(driver);
-        productDetailPages = new ProductDetailPages(driver);
+        homePage = new HomePage();
+        productDetailPages = new ProductDetailPages();
     }
 
     @Test

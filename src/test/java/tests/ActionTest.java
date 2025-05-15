@@ -17,9 +17,9 @@ public class ActionTest extends BaseTest{
 
     @BeforeEach
     void init() {
-        homePage = new HomePage(driver);
-        webElementTestPage = new WebElementsTestPage(driver);
-        actionPage = new ActionPage(driver);
+        homePage = new HomePage();
+        webElementTestPage = new WebElementsTestPage();
+        actionPage = new ActionPage();
         homePage.clickOnWebElementTestLink();
         webElementTestPage.clickOnHoverOverMenuLink();
     }

@@ -17,8 +17,8 @@ public class ProductDetailPages extends BasePage {
     By toolBarCartButton = By.cssSelector("div.header-display-desktop div.showOnDesktop a span.sqs-cart-quantity");
 
     // Constructor de la clase
-    public ProductDetailPages(WebDriver driver) {
-        super(driver);
+    public ProductDetailPages() {
+
     }
 
     public String getProductTitle(){
