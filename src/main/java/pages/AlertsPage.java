@@ -14,8 +14,8 @@ public class AlertsPage extends BasePage{
     By promptLabel_Locator = By.id("prompt_demo");
 
 
-    public AlertsPage(WebDriver driver) {
-        super(driver);
+    public AlertsPage() {
+
     }
 
     public void clickOnAlert_TypeAlertBox(){

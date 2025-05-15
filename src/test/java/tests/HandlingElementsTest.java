@@ -21,10 +21,10 @@ public class HandlingElementsTest extends BaseTest2 {
 
     @BeforeEach
     void setUp() {
-        homePage = new HomePage(driver);
-        alertsPage = new AlertsPage(driver);
+        homePage = new HomePage();
+        alertsPage = new AlertsPage();
         homePage.clickOnWebElementTestLink();
-        webElementsTestPage = new WebElementsTestPage(driver);
+        webElementsTestPage = new WebElementsTestPage();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 

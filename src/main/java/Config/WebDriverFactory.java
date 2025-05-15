@@ -32,6 +32,8 @@ public class WebDriverFactory {
                 driver = new ChromeDriver(options);
                 break;
         }
+
+        DriverManager.setDriver(driver);
         return driver;
 
 

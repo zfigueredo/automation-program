@@ -19,8 +19,8 @@ public class ActionPage extends BasePage{
 
     By selectedOption_Locator = By.id("output");
 
-    public ActionPage(WebDriver driver) {
-        super(driver);
+    public ActionPage() {
+
     }
 
     public String verifyKeysChord(String text){

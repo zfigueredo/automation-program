@@ -1,5 +1,6 @@
 package pages;
 
+import Config.DriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,9 +19,9 @@ public class BasePage {
 
     private static final int TIMEOUT = 10;
 
-   //Constructor de la clase
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
+   //Constructor de la clase///luego se cambio para usar el Drivermanager
+    public BasePage() {
+        this.driver = DriverManager.getDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
     }
 
@@ -162,6 +163,13 @@ public class BasePage {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView()",element);
         js.executeScript("arguments[0].click()",element);
+    }
+
+    public void scrollIntoView(By locator){
+        waitForElementToBeClickable(locator);
+        WebElement element = findElement(locator);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView()",element);
     }
 
     public void waitForElementToBeClickable(WebElement element){

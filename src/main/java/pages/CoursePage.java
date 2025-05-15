@@ -36,8 +36,8 @@ public class CoursePage extends BasePage{
 
     By tableResult_Locator = By.id("userTable");
 
-    public CoursePage(WebDriver driver) {
-        super(driver);
+    public CoursePage() {
+
     }
 
     public void typeName(String name){

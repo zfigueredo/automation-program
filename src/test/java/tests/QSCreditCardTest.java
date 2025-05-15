@@ -1,55 +1,84 @@
 package tests;
 
+import listeners.ExtentReportExtension;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.opentest4j.TestSkippedException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pages.HomePage;
 import pages.QSCreditCardsPage;
+import tests.BaseTest;
 
+@ExtendWith(ExtentReportExtension.class)
 public class QSCreditCardTest extends BaseTest {
-    HomePage homepage;
-    QSCreditCardsPage creditCardsPage;
 
-    @BeforeEach
-    void initPageObject() throws InterruptedException {
-        homepage = new HomePage(driver);
-        homepage.clickOnQSCreditCardsLink();
+    private static final Logger logger = LoggerFactory.getLogger(QSCreditCardTest.class);
 
-        System.out.println(driver.getCurrentUrl());
-        creditCardsPage = new QSCreditCardsPage(driver);
+    static HomePage homePage;
+    static QSCreditCardsPage creditCardsPage;
+
+    @BeforeAll
+    static void initPageObject() {
+        homePage = new HomePage();
+        creditCardsPage = new QSCreditCardsPage();
+
+        homePage.clickOnQSCreditCardsLink();
         creditCardsPage.enterPassword();
     }
 
     @Test
-    void areCreditCardsImagesPresent() {
+    void areCreditCardImagesPresent() {
         Assertions.assertTrue(creditCardsPage.areCreditCardPresent(),
                 "Credit Card Images are not present");
     }
 
-    @Test
-    @DisplayName("Is the Diamond interest updated?")
-    void selectionDiamondCC() {
-        // seleccionar la tarjeta diamond
+    @ParameterizedTest
+    @CsvSource({"diamond, Interés: 18.81% Anual Fee: $550",
+            "golden,Interés: 20.31% Anual Fee: $350",
+            "platinum,Interés: 22.58% Anual Fee: $150"})
+    void areCreditCardsDetailsCorrect(String type, String expectedText){
+
+        //En otra clase veremos cómo parametrizar este Test
+        creditCardsPage.selectCreditCard(type);
+
+        // String expectedText = "Interés: 18.81% Anual Fee: $550";
+        String ccDetails = creditCardsPage.creditCardDetailsUpdated();
+
+        logger.info("Expected: " + expectedText +"\n Current: "+ccDetails);
+        Assertions.assertEquals(expectedText,ccDetails,"CC details are incorrect");
+
+        logger.info("Este print está después del Assertion");
+
+    }
+    /*  @Test
+    void areCreditCardsDetailsCorrect(){
+
+        //En otra clase veremos cómo parametrizar este Test
         creditCardsPage.selectCreditCard("diamond");
-        // verificar que el texto se actualiza
-        Assertions.assertEquals("Interés: 18.81% Anual Fee: $550", creditCardsPage.creditDetailsUpdate());
-        System.out.println("The Diamond CC interest is update successfully");
-    }
+
+        String expectedText = "Interés: 18.81% Anual Fee: $550";
+        String ccDetails = creditCardsPage.creditCardDetailsUpdated();
+
+        logger.info("Expected: " + expectedText +"\n Current: "+ccDetails);
+        Assertions.assertEquals(expectedText,ccDetails,"CC details are incorrect");
+
+        logger.info("Este print está después del Assertion");
+
+    }*/
 
     @Test
-    @DisplayName("Is the Golden interest updated?")
-    void selectionGoldenCC() {
-        creditCardsPage.selectCreditCard("golden");
-        Assertions.assertEquals("Interés: 20.31% Anual Fee: $350", creditCardsPage.creditDetailsUpdate());
-        System.out.println("The Golden CC interest is update successfully");
+    void testingReport() {
+        Assertions.fail("This fails is expected - Checking the report");
     }
 
-    @Test
-    @DisplayName("Is the Platinum interest updated?")
-    void selectionPlatinum() {
-        creditCardsPage.selectCreditCard("platinum");
-        Assertions.assertEquals("Interés: 22.58% Anual Fee: $150", creditCardsPage.creditDetailsUpdate());
-        System.out.println("The Platinum CC interest is update successfully");
-    }
+   /* @Test
+    public void isSkip() {
+        throw new TestSkippedException("Skipping the TC");
+    }*/
 }
