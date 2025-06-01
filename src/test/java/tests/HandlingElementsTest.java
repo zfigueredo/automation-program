@@ -1,9 +1,12 @@
 package tests;
 
 import Example1.BaseTest2;
+import listeners.ExtentReportExtension;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.AlertsPage;
@@ -12,15 +15,16 @@ import pages.WebElementsTestPage;
 
 import java.time.Duration;
 
+@ExtendWith(ExtentReportExtension.class)
 public class HandlingElementsTest extends BaseTest2 {
 
-    HomePage homePage;
-    WebDriverWait wait;
-    WebElementsTestPage webElementsTestPage;
-    private AlertsPage alertsPage;
+    static HomePage homePage;
+    static WebDriverWait wait;
+    static WebElementsTestPage webElementsTestPage;
+    static AlertsPage alertsPage;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
         homePage = new HomePage();
         alertsPage = new AlertsPage();
         homePage.clickOnWebElementTestLink();

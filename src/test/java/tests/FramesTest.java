@@ -1,8 +1,11 @@
 package tests;
 
+import listeners.ExtentReportExtension;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,15 +18,16 @@ import pages.WebElementsTestPage;
 
 import java.time.Duration;
 
+@ExtendWith(ExtentReportExtension.class)
 public class FramesTest extends BaseTest{
 
     private static final Logger logger = LoggerFactory.getLogger(FramesTest.class);
 
-    HomePage homePage;
-    WebElementsTestPage webElementTestPage;
+    static HomePage homePage;
+    static WebElementsTestPage webElementTestPage;
 
-    @BeforeEach
-    void init() {
+    @BeforeAll
+    static void init() {
         homePage = new HomePage();
         webElementTestPage = new WebElementsTestPage();
         homePage.clickOnWebElementTestLink();

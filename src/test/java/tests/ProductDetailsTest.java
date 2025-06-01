@@ -1,18 +1,22 @@
 package tests;
 
+import listeners.ExtentReportExtension;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import pages.HomePage;
 import pages.ProductDetailPages;
 
+@ExtendWith(ExtentReportExtension.class)
 public class ProductDetailsTest extends BaseTest {
 
-    HomePage homePage;
-    ProductDetailPages productDetailPages;
+    static HomePage homePage;
+    static ProductDetailPages productDetailPages;
 
-    @BeforeEach
-    void initPageObject() {
+    @BeforeAll
+    static void initPageObject() {
         homePage = new HomePage();
         productDetailPages = new ProductDetailPages();
     }
