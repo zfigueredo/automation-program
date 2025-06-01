@@ -25,6 +25,7 @@ public class ActionPage extends BasePage{
 
     public String verifyKeysChord(String text){
         WebElement textArea = findElement(textArea1_Locator);
+        textArea.clear();
 
         textArea.sendKeys(Keys.chord(Keys.SHIFT,text));
         return textArea.getAttribute("value");
@@ -32,6 +33,7 @@ public class ActionPage extends BasePage{
 
     public String verifyActionKeyboard(String text){
         WebElement textArea = findElement(textArea1_Locator);
+        textArea.clear();
 
         Actions action = new Actions(driver);
 
@@ -43,7 +45,9 @@ public class ActionPage extends BasePage{
     public String verifyActionCopyPaste(String text){
 
         WebElement textArea1 = findElement(textArea1_Locator);
+        textArea1.clear();
         WebElement textArea2 = findElement(textArea2_Locator);
+        textArea2.clear();
 
         Actions action = new Actions(driver);
         //Escribimos en mayúsculas con SHIFT presionado

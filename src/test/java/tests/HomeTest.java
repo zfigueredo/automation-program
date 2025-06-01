@@ -2,16 +2,20 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import listeners.ExtentReportExtension;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import pages.HomePage;
 
+@ExtendWith(ExtentReportExtension.class)
 public class HomeTest extends BaseTest {
 
-    HomePage homepage;
+    static HomePage homepage;
 
-    @BeforeEach
-    void initPageObject() {
+    @BeforeAll
+   static void initPageObject() {
         homepage = new HomePage();
     }
 

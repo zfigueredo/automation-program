@@ -28,8 +28,10 @@ public class ExtentReportExtension implements TestWatcher, BeforeAllCallback, Af
 
     @Override
     public void beforeAll(ExtensionContext context) throws Exception {
-        ExtentManager.clearScreenshotFolder();
-        extent = ExtentManager.createInstance(ExtentManager.getDefaultReportPath());
+        ExtentManager.clearReportsFolderOnce();
+        String className = context.getRequiredTestClass().getSimpleName();
+        String reportPath = ExtentManager.getReportPathWithClassName(className);
+        extent = ExtentManager.createInstance(reportPath);
 
     }
 
