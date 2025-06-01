@@ -52,6 +52,6 @@ Abre `ExtentReport.html` en tu navegador para ver los resultados.
 
 **Karine Ramos**
 
-🔗 [LinkedIn]([https://www.linkedin.com/in/tu-perfil](https://www.linkedin.com/in/karine-ramos-02006485/))
+🔗 https://www.linkedin.com/in/tu-perfil](https://www.linkedin.com/in/karine-ramos-02006485/
 
 📧 qualitystream@email.com
