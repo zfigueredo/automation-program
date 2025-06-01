@@ -70,10 +70,10 @@ public class QSCreditCardTest extends BaseTest {
 
     }*/
 
-    @Test
-    void testingReport() {
-        Assertions.fail("This fails is expected - Checking the report");
-    }
+   // @Test
+   // void testingReport() {
+   //     Assertions.fail("This fails is expected - Checking the report");
+   // }
 
    /* @Test
     public void isSkip() {

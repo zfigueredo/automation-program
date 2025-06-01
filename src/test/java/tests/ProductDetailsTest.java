@@ -17,11 +17,11 @@ public class ProductDetailsTest extends BaseTest {
     static void initPageObject() {
         homePage = new HomePage();
         productDetailPages = new ProductDetailPages();
+        homePage.clickOnProductLink(3);
     }
 
     @Test
     void verifyProductTitleIsPresent() {
-        homePage.clickOnProductLink(3);
         String currentTitle = productDetailPages.getProductTitle();
         System.out.println("Product Title: " + currentTitle);
         Assertions.assertFalse(currentTitle.isEmpty(), "Product Title is not present");
@@ -29,7 +29,6 @@ public class ProductDetailsTest extends BaseTest {
 
     @Test
     void verifyProductPriceIsPresent() {
-        homePage.clickOnProductLink(3);
         String currentPrice = productDetailPages.getProductPrice();
         System.out.println("Product Price: " + currentPrice);
         Assertions.assertFalse(currentPrice.isEmpty(), "Product Price is not present");

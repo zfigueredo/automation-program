@@ -1,10 +1,7 @@
 package tests;
 
 import listeners.ExtentReportExtension;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,12 +13,12 @@ import pages.WebElementsTestPage;
 @Tag("Action_Regression")
 public class ActionTest extends BaseTest{
     private static final Logger logger = LoggerFactory.getLogger(ActionTest.class);
-    HomePage homePage;
-    WebElementsTestPage webElementTestPage;
-    ActionPage actionPage;
+    static HomePage homePage;
+    static WebElementsTestPage webElementTestPage;
+    static ActionPage actionPage;
 
-    @BeforeEach
-    void init() {
+    @BeforeAll
+    static void init() {
         homePage = new HomePage();
         webElementTestPage = new WebElementsTestPage();
         actionPage = new ActionPage();
