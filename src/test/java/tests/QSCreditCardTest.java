@@ -1,10 +1,7 @@
 package tests;
 
 import listeners.ExtentReportExtension;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -16,6 +13,7 @@ import pages.QSCreditCardsPage;
 import tests.BaseTest;
 
 @ExtendWith(ExtentReportExtension.class)
+@Tag("CreditCards_Regression")
 public class QSCreditCardTest extends BaseTest {
 
     private static final Logger logger = LoggerFactory.getLogger(QSCreditCardTest.class);
