@@ -51,8 +51,7 @@ public class HomePage extends BasePage{
 
     public void clickOnProductLink(int index){
         List<WebElement> productLinks = findElements(productLinkList_Locator);
-        if (index < productLinks.size())
-            productLinks.get(index).click();
+        scrollIntoViewAndClick(productLinks.get(index));
     }
 
     public boolean isQSCreditCardsLinksDisplayed(){
